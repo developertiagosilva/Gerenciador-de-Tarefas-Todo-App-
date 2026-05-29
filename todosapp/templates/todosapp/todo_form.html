@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block page_title %}
+  {% if todo.pk %}
+    Editar a Tarefa
+  {% else %}
+    Nova Tarefa
+  {% endif %}
+{% endblock page_title %}
+  
+
+
+
+{% block content %}
+
+  {% if todo.pk %}
+    <h1>Editar a Tarefa</h1>
+  {% else %}
+    <h1>Nova Tarefa</h1>
+  {% endif %}
+
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+<button type="submit"class="btn btn-primary">Salvar</button>
+<br>
+
+
+</form>
+  <br>
+  <p><a href="{% url 'todo_list' %}" class="btn btn-primary" role="button">Volta para Home</a>
+  
+
+        
+
+{% endblock content %}
+  
